@@ -148,7 +148,6 @@ modulename farstream
 ignore-glob
         *_get_type
         fs_*_list_copy
-        fs_*_destroy
 	fs_*_from_keyfile
 	fs_codec_*_optional_parameter
 	fs_codec_*_feedback_parameter
