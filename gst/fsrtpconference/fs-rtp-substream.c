@@ -1361,6 +1361,7 @@ _rtpbin_pad_blocked_callback (GstPad *pad, gboolean blocked, gpointer user_data)
     GST_DEBUG ("Setting caps %s on recv substream", tmp);
     g_free (tmp);
     g_object_set (substream->priv->capsfilter, "caps", caps, NULL);
+    gst_caps_unref (caps);
 
     fs_rtp_sub_stream_add_probe_locked (substream);
   }
