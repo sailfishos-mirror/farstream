@@ -776,6 +776,8 @@ fs_rtp_sub_stream_finalize (GObject *object)
   if (self->priv->mutex)
     g_mutex_free (self->priv->mutex);
 
+  g_static_rw_lock_free (&self->priv->stopped_lock);
+
   G_OBJECT_CLASS (fs_rtp_sub_stream_parent_class)->finalize (object);
 }
 
