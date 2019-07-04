@@ -264,6 +264,12 @@ FS_PREFIX="`$PKG_CONFIG --variable=prefix farstream-$FS_APIVERSION`"
 AC_SUBST(GLIB_PREFIX)
 AC_SUBST(FS_PREFIX)
 
+dnl Check for glib-2.0 tools
+AC_MSG_CHECKING([for glib-mkenums])
+GLIB_MKENUMS="`$PKG_CONFIG --variable=glib_mkenums glib-2.0`"
+AC_SUBST(GLIB_MKENUMS)
+AC_MSG_RESULT($GLIB_MKENUMS)
+
 dnl *** set variables based on configure arguments ***
 
 dnl set license and copyright notice
