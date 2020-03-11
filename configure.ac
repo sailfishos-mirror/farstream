@@ -240,12 +240,12 @@ dnl *** checks for library functions ***
 dnl *** checks for dependency libraries ***
 
 dnl GLib is required
-AG_GST_GLIB_CHECK([2.32])
-AC_DEFINE(GLIB_VERSION_MIN_REQUIRED, GLIB_VERSION_2_32, [Ignore post 2.32 deprecations])
-AC_DEFINE(GLIB_VERSION_MAX_ALLOWED, GLIB_VERSION_2_32, [Prevent post 2.32 APIs])
+AG_GST_GLIB_CHECK([2.40])
+AC_DEFINE(GLIB_VERSION_MIN_REQUIRED, GLIB_VERSION_2_40, [Ignore post 2.40 deprecations])
+AC_DEFINE(GLIB_VERSION_MAX_ALLOWED, GLIB_VERSION_2_40, [Prevent post 2.40 APIs])
 
 
-PKG_CHECK_MODULES(GIO_UNIX, gio-unix-2.0 >= 2.32, [HAVE_GIO_UNIX=true],[HAVE_GIO_UNIX=false])
+PKG_CHECK_MODULES(GIO_UNIX, gio-unix-2.0 >= 2.40, [HAVE_GIO_UNIX=true],[HAVE_GIO_UNIX=false])
 AC_SUBST(GIO_UNIX_CFLAGS)
 AC_SUBST(GIO_UNIX_LIBS)
 AM_CONDITIONAL(HAVE_GIO_UNIX, test "x$HAVE_GIO_UNIX" = "xyes")
