@@ -118,7 +118,7 @@ CLEANFILES = farstream-transmitters.types
 
 # CFLAGS and LDFLAGS for compiling scan program. Only needed if your app/lib
 # contains GtkObjects/GObjects and you want to document signals and properties.
-GTKDOC_CFLAGS = $(GST_BASE_CFLAGS) -I$(top_builddir) -I$(top_builddir)/gst-libs
+GTKDOC_CFLAGS = $(GST_BASE_CFLAGS) -I$(top_builddir) -I$(top_builddir)/gst-libs -I$(top_srcdir)
 GTKDOC_LIBS = \
 	$(top_builddir)/farstream/libfarstream-@FS_APIVERSION@.la \
 	$(top_builddir)/gst/fsrtpconference/libfsrtpconference_doc.la \
@@ -137,5 +137,7 @@ FS_PLUGIN_PATH=$(top_builddir)/transmitters/rawudp/.libs:$(top_builddir)/transmi
 
 update-all: scanobj-trans-build.stamp update
 
+# This seems to be missing form GStreamer's common version
+DISTCLEANFILES=$(DOC_MODULE)-sections.new
 
 include $(top_srcdir)/common-modified/gtk-doc-plugins.mak
