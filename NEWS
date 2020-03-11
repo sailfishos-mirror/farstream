@@ -1,5 +1,13 @@
+farstream 0.2.9 (March 11, 2020)
+================================
+- Add OPUS specific SDP OA negotiation to match RFC
+- Switch VP8 to standard encoding name
+- Removed MSN plugin, MSN Messenger is long dead
+- Port away from deprecated libnice signals
+- Bug fixes
+
 farstream 0.2.8 (March 10, 2016)
-==================================
+================================
 - Add "require-encryption" parameter to ignore unencrypted packets
 - Enable building static GStreamer and transmitter plugins
 - Make OPUS plugin work and select it as default codec
