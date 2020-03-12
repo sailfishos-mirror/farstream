@@ -6,7 +6,8 @@
 #glib_gen_prefix=gst_color_balance
 #glib_gen_basename=colorbalance
 
-enum_headers=$(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
+hash:=\#
+enum_headers=$(foreach h,$(glib_enum_headers),\n$(hash)include \"$(h)\")
 
 # these are all the rules generating the relevant files
 $(glib_gen_basename)-enumtypes.h: $(glib_enum_headers)
