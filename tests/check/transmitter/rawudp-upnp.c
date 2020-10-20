@@ -37,7 +37,7 @@ get_vars (gboolean *out_got_address,
 }
 
 
-#ifdef HAVE_GUPNP
+#if defined(HAVE_GUPNP_CORE_10) || defined(HAVE_GUPNP_CORE_12)
 
 #include <libgupnp/gupnp.h>
 
@@ -126,8 +126,14 @@ start_upnp_server (void)
   GUPnPDeviceInfo *subdev1;
   GUPnPDeviceInfo *subdev2;
   const gchar *upnp_xml_path;
+  GError *gerr = NULL;
 
-  context = gupnp_context_new (NULL, NULL, 0, NULL);
+#ifdef HAVE_GUPNP_CORE_12
+  context = gupnp_context_new (NULL, 0, &gerr);
+#else
+  context = gupnp_context_new (NULL, NULL, 0, &gerr);
+#endif
+  g_assert_no_error (gerr);
   ts_fail_if (context == NULL, "Can't get gupnp context");
 
   if (g_getenv ("UPNP_XML_PATH"))
@@ -137,8 +143,14 @@ start_upnp_server (void)
 
   gupnp_context_host_path (context, upnp_xml_path, "");
 
+#ifdef HAVE_GUPNP_CORE_12
+  dev = gupnp_root_device_new (context, "InternetGatewayDevice.xml",
+      upnp_xml_path, &gerr);
+  g_assert_no_error (gerr);
+#else
   dev = gupnp_root_device_new (context, "InternetGatewayDevice.xml",
       upnp_xml_path);
+#endif
   ts_fail_if (dev == NULL, "could not get root dev");
 
   subdev1 = gupnp_device_info_get_device (GUPNP_DEVICE_INFO (dev),

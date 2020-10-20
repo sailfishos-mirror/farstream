@@ -370,7 +370,24 @@ fi
 
 if test "x$HAVE_GUPNP" = "xyes"; then
    AC_DEFINE(HAVE_GUPNP,,[Have the GUPnP IGD library])
+
+    PKG_CHECK_MODULES(GUPNP_CORE, [ gupnp-1.2 ],
+	[ HAVE_GUPNP_CORE_12=yes ],
+	[ HAVE_GUPNP_CORE_12=no
+	  PKG_CHECK_MODULES(GUPNP_CORE, [ gupnp-1.0 ],
+	     [ HAVE_GUPNP_CORE_10=yes ],
+	     [ HAVE_GUPNP_CORE_10=no ])
+    ])
+
+    if test "x$HAVE_GUPNP_CORE_10" = "xyes"; then
+       AC_DEFINE(HAVE_GUPNP_CORE_10,,[Have the GUPnP 1.0 library])
+    fi
+
+    if test "x$HAVE_GUPNP_CORE_12" = "xyes"; then
+       AC_DEFINE(HAVE_GUPNP_CORE_12,,[Have the GUPnP 1.2 library])
+    fi
 fi
+
 
 dnl build static plugins or not
 AC_MSG_CHECKING([whether to build static plugins or not])

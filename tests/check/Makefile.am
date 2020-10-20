@@ -76,9 +76,9 @@ base_fscodec_SOURCES = \
 
 
 transmitter_rawudp_CFLAGS = $(AM_CFLAGS) \
-	$(GUPNP_CFLAGS) $(GIO_CFLAGS) $(NICE_CFLAGS)
+	$(GUPNP_CORE_CFLAGS) $(GIO_CFLAGS) $(NICE_CFLAGS)
 transmitter_rawudp_LDADD = $(LDADD) \
-	$(GUPNP_LIBS) \
+	$(GUPNP_CORE_LIBS) \
 	$(GIO_LIBS) \
 	$(NICE_LIBS)
 transmitter_rawudp_SOURCES = \
@@ -113,9 +113,8 @@ transmitter_nice_SOURCES = \
 transmitter_nice_LDADD = $(LDADD) $(GST_BASE_LIBS)
 
 
-transmitter_shm_CFLAGS = $(AM_CFLAGS) $(GUPNP_CFLAGS) $(NICE_CFLAGS)
+transmitter_shm_CFLAGS = $(AM_CFLAGS) $(NICE_CFLAGS)
 transmitter_shm_LDADD = $(LDADD) \
-	$(GUPNP_LIBS) \
 	$(NICE_LIBS)
 transmitter_shm_SOURCES = \
 	check-threadsafe.h  \

@@ -637,7 +637,7 @@ GST_START_TEST (test_rawudptransmitter_stop_stream)
 }
 GST_END_TEST;
 
-#ifdef HAVE_GUPNP
+#if defined(HAVE_GUPNP_CORE_10) || defined (HAVE_GUPNP_CORE_12)
 
 GST_START_TEST (test_rawudptransmitter_run_upnp_discovery)
 {
@@ -967,7 +967,7 @@ rawudptransmitter_suite (void)
   tcase_add_test (tc_chain, test_rawudptransmitter_stop_stream);
   suite_add_tcase (s, tc_chain);
 
-#ifdef HAVE_GUPNP
+#if defined(HAVE_GUPNP_CORE_10) || defined (HAVE_GUPNP_CORE_12)
   if (g_getenv ("UPNP")) {
     gchar *multicast_addr;
 
