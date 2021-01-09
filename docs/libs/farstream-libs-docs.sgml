@@ -4,7 +4,7 @@
 <!ENTITY % version-entities SYSTEM "version.entities">
 %version-entities;
 ]>
-<book id="index" xmlns:xi="http://www.w3.org/2003/XInclude">
+<book id="index" xmlns:xi="http://www.w3.org/2001/XInclude">
   <bookinfo>
     <title>Farstream Reference Manual</title>
     <releaseinfo>
