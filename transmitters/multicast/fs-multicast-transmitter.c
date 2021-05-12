@@ -541,7 +541,7 @@ struct _UdpSock {
 
   guint component_id;
 
-  volatile gint sendcount;
+  gint sendcount;
 };
 
 static gboolean

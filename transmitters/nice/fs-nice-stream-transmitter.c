@@ -110,7 +110,7 @@ struct _FsNiceStreamTransmitterPrivate
 
   GPtrArray *relay_info;
 
-  volatile gint associate_on_source;
+  gint associate_on_source;
 
   gboolean *component_has_been_ready; /* only from NiceAgent main thread */
 

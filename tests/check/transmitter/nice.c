@@ -44,7 +44,7 @@ enum {
 gint buffer_count[2][2] = {{0,0}, {0,0}};
 guint received_known[2][2] = {{0,0}, {0,0}};
 GMainLoop *loop = NULL;
-volatile gint running = TRUE;
+gint running = TRUE;
 gboolean associate_on_source = TRUE;
 gboolean is_address_local = FALSE;
 gboolean force_candidates = FALSE;
